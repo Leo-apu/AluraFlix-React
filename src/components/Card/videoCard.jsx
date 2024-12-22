@@ -13,7 +13,7 @@ const CardContainer = styled.div`
   background: black;
   border: 1px solid ${({ $colorPrimario }) => $colorPrimario};
   border-radius: 10px;
-  width: 430px;
+  max-width: 410px;
   position: relative;
   box-shadow: 1px 0px 5px 1px ${({ $colorPrimario }) => $colorPrimario};
   overflow  : hidden;

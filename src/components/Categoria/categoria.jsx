@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import VideoCard from "../Card/videoCard";
+import Galeria from "../Galeria/galeria";
 
 const CategoriaContainer = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ const CategoriaContainer = styled.div`
 
   @media (max-width: 768px) {
     align-items: center;
+    padding: 0 15px 50px 15px;
   }
 `;
 
@@ -47,9 +48,10 @@ const Categoria = ( { titulo , colorPrimario, videos} ) => {
     <CategoriaContainer>
       <CategoriaTitle style={{ backgroundColor: colorPrimario }}>{titulo}</CategoriaTitle>
       <CardsContainer>
-       {videos.map((video, index) => (
+      {/*  {videos.map((video, index) => (
           <VideoCard key={index} video={video} colorPrimario={colorPrimario} />
-        ))}
+        ))} */}
+        <Galeria videos={videos} colorPrimario={colorPrimario} />
       </CardsContainer>
     </CategoriaContainer>
   );

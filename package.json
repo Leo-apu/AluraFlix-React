@@ -19,6 +19,7 @@
     "react-router-dom": "^7.0.2",
     "styled-components": "^6.1.13",
     "sweetalert2": "^11.15.3",
+    "swiper": "^11.1.15",
     "uuid": "^11.0.3"
   },
   "devDependencies": {
