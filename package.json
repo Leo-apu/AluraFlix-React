@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite ",
+    "server": "json-server --watch ./src/data/db.json --port=3003 ",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -13,6 +14,7 @@
     "aluraflix": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
     "react-router-dom": "^7.0.2",
     "styled-components": "^6.1.13"
   },

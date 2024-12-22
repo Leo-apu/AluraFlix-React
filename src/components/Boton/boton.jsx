@@ -15,7 +15,7 @@ const BotonEstilizado = styled.button`
   transition: all 0.3s ease-in-out;
 
   /* Estilos para cuando el botón está en hover o activo */
-  ${({ activo }) => activo && `
+  ${({ $activo }) => $activo && `
     background-color: #000;
     color: #2171D1; 
     border-color: #2171D1; 
@@ -37,8 +37,8 @@ const BotonEstilizado = styled.button`
   }
 `;
 
-const Boton = ({ titulo, activo }) => {
-  return <BotonEstilizado activo={activo}>{titulo}</BotonEstilizado>;
+const Boton = ({ titulo, $activo }) => {
+  return <BotonEstilizado $activo={$activo}>{titulo}</BotonEstilizado>;
 };
 
 export default Boton;

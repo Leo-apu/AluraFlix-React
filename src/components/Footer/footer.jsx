@@ -11,7 +11,6 @@ const FooterEstilizado = styled.footer`
         width: 150px;
     }
     
-    /* Fijar el footer en la parte inferior solo en pantallas pequeñas */
     @media (max-width: 768px) {
         position: fixed;
         bottom: 0;
@@ -25,10 +24,9 @@ const FooterEstilizado = styled.footer`
 `
 
 const Contenedor = styled.div`
-  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Asegura que el contenido principal ocupe el espacio entre el header y el footer */
+  justify-content: space-between;
 `
 
 const Footer = () => {

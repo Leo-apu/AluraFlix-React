@@ -24,8 +24,8 @@ const InfoContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   color: white;
-  padding: 20px;
-  width: 50%; /* Ocupa la mitad del banner */
+  padding: 50px;
+  width: 50%;
 `;
 
 const FrontEndButton = styled.button`
