@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import { DataContext } from "../../context/DataContext";
+import { useContext } from "react";
 
 // Estilos para el contenedor principal
 const CardContainer = styled.div`
@@ -13,7 +15,12 @@ const CardContainer = styled.div`
   width: 430px;
   position: relative;
   box-shadow: 1px 0px 5px 1px ${({ $colorPrimario }) => $colorPrimario};
-  overflow: hidden;
+  overflow  : hidden;
+
+  &:hover {
+    box-shadow: 0 0 15px 5px ${({ $colorPrimario }) => $colorPrimario};
+    transform: scale(0.95);
+  }
 `;
 
 // Contenedor para la imagen o video principal
@@ -67,14 +74,22 @@ const Button = styled.button`
 `;
 
 // Componente funcional
-const VideoCard = ( { colorPrimario} ) => {
+const VideoCard = ( { colorPrimario , video} ) => {
+  const { eliminarVideo } = useContext(DataContext);
+
+  const handleDeleteVideo = () => {
+    eliminarVideo(video.id);
+    alert("Video Eliminado");
+  };
+
+
   return (
     <CardContainer $colorPrimario={colorPrimario}>
       <MediaContainer $colorPrimario={colorPrimario}>
-        <Media src="https://via.placeholder.com/300x200" alt="Preview" />
+        <Media src={video.imagen} alt="Preview" />
       </MediaContainer>
       <ButtonContainer $colorPrimario={colorPrimario}>
-        <Button $colorPrimario={colorPrimario}>
+        <Button $colorPrimario={colorPrimario} onClick={handleDeleteVideo}>
           <FaTrash /> Borrar
         </Button>
         <Button $colorPrimario={colorPrimario}>

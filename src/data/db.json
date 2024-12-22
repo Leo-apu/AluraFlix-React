@@ -1,88 +1,87 @@
 {
-    "categorias": [
-      {
-        "id": "uuid-1",
-        "titulo": "Front End",
-        "colorPrimario": "#6BD1FF",
-        "descripcion": "Formación Front End de Alura Latam"
-      },
-      {
-        "id": "uuid-2",
-        "titulo": "Back End",
-        "colorPrimario": "#00C86F",
-        "descripcion": "Formación Back End de Alura Latam"
-      },
-      {
-        "id": "uuid-3",
-        "titulo": "Innovación y Gestión",
-        "colorPrimario": "#FF8C2A",
-        "descripcion": "Formación Innovación y Gestión de Alura Latam"
-      }
-    ],
-    "videos": [
-      {
-        "id": "uuid-4",
-        "categoria": "Front End",
-        "descripcion": "Formación Front End de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=-LmFK6skG7s",
-        "imagen": "https://i.ytimg.com/vi/-LmFK6skG7s/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-5",
-        "categoria": "Front End",
-        "descripcion": "Formación Front End de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=AG2QssLpQzI",
-        "imagen": "https://i.ytimg.com/vi/AG2QssLpQzI/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-6",
-        "categoria": "Front End",
-        "descripcion": "Formación Front End de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=JJgcJ9g-a30",
-        "imagen": "https://i.ytimg.com/vi/JJgcJ9g-a30/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-7",
-        "categoria": "Front End",
-        "descripcion": "Formación Front End de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=j71g5TiMA-M",
-        "imagen": "https://i.ytimg.com/vi/j71g5TiMA-M/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-8",
-        "categoria": "Back End",
-        "descripcion": "Formación Back End de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=Z024LSCMqFk",
-        "imagen": "https://i.ytimg.com/vi/Z024LSCMqFk/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-9",
-        "categoria": "Back End",
-        "descripcion": "Formación Back End de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=eejIHbOk_uI",
-        "imagen": "https://i.ytimg.com/vi/eejIHbOk_uI/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-10",
-        "categoria": "Back End",
-        "descripcion": "Formación Back End de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=3aK3Omo2RrU",
-        "imagen": "https://i.ytimg.com/vi/3aK3Omo2RrU/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-11",
-        "categoria": "Innovación y Gestión",
-        "descripcion": "Formación Innovación y Gestión de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=pOYyav4qx7o",
-        "imagen": "https://i.ytimg.com/vi/pOYyav4qx7o/maxresdefault.jpg"
-      },
-      {
-        "id": "uuid-12",
-        "categoria": "Innovación y Gestión",
-        "descripcion": "Formación Innovación y Gestión de Alura Latam",
-        "link": "https://www.youtube.com/watch?v=mwNfWRsDDWE",
-        "imagen": "https://i.ytimg.com/vi/mwNfWRsDDWE/maxresdefault.jpg"
-      }
-    ]
-  }
-  
+  "categorias": [
+    {
+      "id": "uuid-11",
+      "titulo": "Front End",
+      "colorPrimario": "#6BD1FF",
+      "descripcion": "Formación Front End de Alura Latam"
+    },
+    {
+      "id": "uuid-22",
+      "titulo": "Back End",
+      "colorPrimario": "#00C86F",
+      "descripcion": "Formación Back End de Alura Latam"
+    },
+    {
+      "id": "uuid-33",
+      "titulo": "Innovación y Gestión",
+      "colorPrimario": "#FF8C2A",
+      "descripcion": "Formación Innovación y Gestión de Alura Latam"
+    }
+  ],
+  "videos": [
+    {
+      "id": "uuid-4",
+      "categoria": "Front End",
+      "descripcion": "Formación Front End de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=-LmFK6skG7s",
+      "imagen": "https://i.ytimg.com/vi/-LmFK6skG7s/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-5",
+      "categoria": "Front End",
+      "descripcion": "Formación Front End de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=AG2QssLpQzI",
+      "imagen": "https://i.ytimg.com/vi/AG2QssLpQzI/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-6",
+      "categoria": "Front End",
+      "descripcion": "Formación Front End de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=JJgcJ9g-a30",
+      "imagen": "https://i.ytimg.com/vi/JJgcJ9g-a30/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-7",
+      "categoria": "Front End",
+      "descripcion": "Formación Front End de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=j71g5TiMA-M",
+      "imagen": "https://i.ytimg.com/vi/j71g5TiMA-M/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-8",
+      "categoria": "Back End",
+      "descripcion": "Formación Back End de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=Z024LSCMqFk",
+      "imagen": "https://i.ytimg.com/vi/Z024LSCMqFk/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-9",
+      "categoria": "Back End",
+      "descripcion": "Formación Back End de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=eejIHbOk_uI",
+      "imagen": "https://i.ytimg.com/vi/eejIHbOk_uI/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-10",
+      "categoria": "Back End",
+      "descripcion": "Formación Back End de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=3aK3Omo2RrU",
+      "imagen": "https://i.ytimg.com/vi/3aK3Omo2RrU/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-11",
+      "categoria": "Innovación y Gestión",
+      "descripcion": "Formación Innovación y Gestión de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=pOYyav4qx7o",
+      "imagen": "https://i.ytimg.com/vi/pOYyav4qx7o/maxresdefault.jpg"
+    },
+    {
+      "id": "uuid-12",
+      "categoria": "Innovación y Gestión",
+      "descripcion": "Formación Innovación y Gestión de Alura Latam",
+      "link": "https://www.youtube.com/watch?v=mwNfWRsDDWE",
+      "imagen": "https://i.ytimg.com/vi/mwNfWRsDDWE/maxresdefault.jpg"
+    }
+  ]
+}

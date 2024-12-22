@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./components/Pages/Home.jsx";
 import Footer from "./components/Footer/footer.jsx";
 import Video from "./components/Pages/Video.jsx";
-import { useEffect, useState } from "react";
-
+import { useContext } from "react";
+import { DataContext } from "./context/DataContext.jsx";
 
 const FondoGradiente = styled.div`
   background-color: #262626;
@@ -29,23 +29,9 @@ const MainContainer = styled.main`
 `;
 
 function App() {
-  const [categorias, setCategorias] = useState([]);
 
-  const fetchCategorias = async () => {
-    try {
-      const response = await fetch('http://localhost:3003/categorias');
-      const data = await response.json();
-      setCategorias(data);
-    } catch (error) {
-      console.error('Error al obtener las categorías:', error);
-    }
-  };
+const { categorias, videos } = useContext(DataContext);
 
-  useEffect(() => {
-    fetchCategorias();
-  }, []);
-
-  console.log(categorias);
 
   return (
     <Router>
@@ -55,7 +41,7 @@ function App() {
           <Header />
           <MainContainer>
             <Routes>
-              <Route path="/" element={<Home categorias={categorias}  />} />
+              <Route path="/" element={<Home categorias={categorias} videos={videos}  />} />
 
               <Route path="/video" element={<Video />} />
 

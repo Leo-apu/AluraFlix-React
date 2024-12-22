@@ -42,19 +42,14 @@ const CardsContainer = styled.div`
   }
 `;
 
-const Categoria = ( { titulo , colorPrimario} ) => {
+const Categoria = ( { titulo , colorPrimario, videos} ) => {
   return (
     <CategoriaContainer>
       <CategoriaTitle style={{ backgroundColor: colorPrimario }}>{titulo}</CategoriaTitle>
       <CardsContainer>
-        {/*         {videos.map((video, index) => (
-          <VideoCard key={index} {...video} />
-        ))} */}
-
-        <VideoCard colorPrimario={colorPrimario} />
-        <VideoCard colorPrimario={colorPrimario} />
-        <VideoCard colorPrimario={colorPrimario} />
-        <VideoCard  colorPrimario={colorPrimario} />
+       {videos.map((video, index) => (
+          <VideoCard key={index} video={video} colorPrimario={colorPrimario} />
+        ))}
       </CardsContainer>
     </CategoriaContainer>
   );
