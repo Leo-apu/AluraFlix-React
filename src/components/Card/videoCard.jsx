@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { DataContext } from "../../context/DataContext";
 import { useContext } from "react";
+import showAlert from "../../util/Alert";
 
 // Estilos para el contenedor principal
 const CardContainer = styled.div`
@@ -79,7 +80,7 @@ const VideoCard = ( { colorPrimario , video} ) => {
 
   const handleDeleteVideo = () => {
     eliminarVideo(video.id);
-    alert("Video Eliminado");
+    showAlert("Video Eliminado", `El video "${video.titulo}" ha sido eliminado con exito`, "success" , "Aceptar");
   };
 
 
