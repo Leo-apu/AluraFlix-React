@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import VideoForm from "../VideoForm/videoForm";
+import Modal from "../Modal/modal";
+import { useState } from "react";
 
 const VideoContainer = styled.div`
   display: flex;
@@ -25,15 +27,26 @@ const VideoSubtitle = styled.p`
   color: #b3b3b3;
 `;
 
-const Video = ( { categorias } ) => {
+const Video = ({ categorias }) => {
+  const [addCategory, setAddCategory] = useState(false);
+
   return (
-    <VideoContainer>
-      <VideoTitle>Nuevo Video</VideoTitle>
-      <VideoSubtitle>
-        Complete el formulario para crear una nueva tarjeta de video
-      </VideoSubtitle>
-      <VideoForm categorias={categorias} />
-    </VideoContainer>
+    <>
+      <VideoContainer>
+        <VideoTitle>Nuevo Video</VideoTitle>
+        <VideoSubtitle>
+          Complete el formulario para crear una nueva tarjeta de video
+        </VideoSubtitle>
+        <VideoForm
+          categorias={categorias}
+          estado={addCategory}
+          cambiarEstado={setAddCategory}
+        />
+      </VideoContainer>
+      <Modal estado={addCategory} cambiarEstado={setAddCategory}>
+        <h3>crear</h3>
+      </Modal>
+    </>
   );
 };
 

@@ -75,7 +75,7 @@ const Button = styled.button`
 `;
 
 // Componente funcional
-const VideoCard = ( { colorPrimario , video} ) => {
+const VideoCard = ( { colorPrimario , video ,estado , cambiarEstado , estadoImg , cambiarEstadoImg , setSelectedVideo }  ) => {
   const { eliminarVideo } = useContext(DataContext);
 
   const handleDeleteVideo = () => {
@@ -85,15 +85,18 @@ const VideoCard = ( { colorPrimario , video} ) => {
 
 
   return (
-    <CardContainer $colorPrimario={colorPrimario}>
-      <MediaContainer $colorPrimario={colorPrimario}>
-        <Media src={video.imagen} alt="Preview" />
+    <CardContainer $colorPrimario={colorPrimario} >
+      <MediaContainer $colorPrimario={colorPrimario} onClick={() => {
+        setSelectedVideo(video);
+         cambiarEstadoImg(!estadoImg);
+      }}>
+        <Media src={video.imagen} alt="Preview"  />
       </MediaContainer>
       <ButtonContainer $colorPrimario={colorPrimario}>
         <Button $colorPrimario={colorPrimario} onClick={handleDeleteVideo}>
           <FaTrash /> Borrar
         </Button>
-        <Button $colorPrimario={colorPrimario}>
+        <Button $colorPrimario={colorPrimario} onClick={() => cambiarEstado(!estado)} >
           <FaEdit /> Editar
         </Button>
       </ButtonContainer>
