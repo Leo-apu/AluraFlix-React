@@ -15,6 +15,8 @@ const HeaderEstilizado = styled.header`
         img {
             display: none;
         }
+
+        padding: 0;
     }
 `
 

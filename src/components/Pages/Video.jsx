@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
+import VideoForm from "../VideoForm/videoForm";
 
 const VideoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #0e0e0e;
   color: white;
   padding: 20px;
@@ -23,14 +25,14 @@ const VideoSubtitle = styled.p`
   color: #b3b3b3;
 `;
 
-const Video = () => {
+const Video = ( { categorias } ) => {
   return (
     <VideoContainer>
       <VideoTitle>Nuevo Video</VideoTitle>
       <VideoSubtitle>
         Complete el formulario para crear una nueva tarjeta de video
       </VideoSubtitle>
-      
+      <VideoForm categorias={categorias} />
     </VideoContainer>
   );
 };

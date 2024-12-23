@@ -16,7 +16,7 @@ const FooterEstilizado = styled.footer`
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 5vh;
+        height: 8vh;
         img {
             display: none;
         }
