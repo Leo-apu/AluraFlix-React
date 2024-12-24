@@ -4,6 +4,25 @@ import Categoria from "../Categoria/categoria";
 import Modal from "../Modal/modal";
 import { useState } from "react";
 import useModal from "../../util/useModal";
+import EditVideoForm from "../VideoForm/editVideoForm";
+import styled from "styled-components";
+
+
+const IframeContainer = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+`;
+
+const StyledIframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
 
 const Home = ({ categorias, videos }) => {
   const { open, cambiarEstado , typeModal } = useModal();
@@ -33,17 +52,17 @@ const Home = ({ categorias, videos }) => {
         ))}
 
       <Modal estado={open} cambiarEstado={() => cambiarEstado(null)}>
-        {typeModal === "editar" && <h3>Editar</h3>}
+        {typeModal === "editar" && <EditVideoForm categorias={categorias} selectedVideo={selectedVideo} />}
         {typeModal === "verVideo" && selectedVideo ? (
-          <iframe
-            width="100%"
-            height="400"
+          <IframeContainer>
+          <StyledIframe
             src={`https://www.youtube.com/embed/${getYouTubeID(selectedVideo.link)}`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          ></iframe>
+          ></StyledIframe>
+        </IframeContainer>
         ) : typeModal === "verVideo" ? (
           <h3>Selecciona un video</h3>
         ) : null}

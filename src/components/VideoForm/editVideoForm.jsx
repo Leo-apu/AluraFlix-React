@@ -1,34 +1,33 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { AiOutlinePlus } from "react-icons/ai";
-import { v4 as uuid } from "uuid";
 import { DataContext } from "../../context/DataContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const FormContainer = styled.div`
-    width: 95%;
-  margin-bottom: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 
   h2 {
-    margin-bottom: 20px;
-    padding: 25px 0;
-    border-bottom: 1px solid #555;
-    border-top: 1px solid #555;
+    margin-bottom: 5px;
+    padding: 15px 0;
+    border-bottom: 1px solid #6bd1ff;
+    border-top: 1px solid #6bd1ff;
   }
 `;
 
 const Label = styled.label`
   display: block;
-  margin: 15px 0 15px;
-  font-weight: bold;
+  margin: 5px 0 8px;
+  color: white;
 `;
 
 const TextArea = styled.textarea`
-  width: 50%;
+  width: 100%;
   padding: 10px;
-  border: 1px solid #555;
-  background: #0e0e0e;
+  border: 1px solid #6bd1ff;
+  background: #03122f;
   color: white;
   border-radius: 5px;
   &:focus {
@@ -48,9 +47,9 @@ const TextArea = styled.textarea`
 
 const Input = styled.input`
   width: 100%;
-  padding: 20px 10px;
-  border: 1px solid #555;
-  background: #0e0e0e;
+  padding: 10px 10px;
+  border: 1px solid #6bd1ff;
+  background: #03122f;
   color: white;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -70,8 +69,8 @@ const Input = styled.input`
 const Select = styled.select`
   width: 100%;
   padding: 20px 10px;
-  border: 1px solid #555;
-  background: #0e0e0e;
+  border: 1px solid #6bd1ff;
+  background: #03122f;
   color: white;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -85,7 +84,6 @@ const Select = styled.select`
     border-color: #e63946;
     box-shadow: inset 0 0 5px #e63946;
   }
-
 `;
 
 const Error = styled.p`
@@ -97,16 +95,17 @@ const Error = styled.p`
 const ButtonGroup = styled.div`
   display: flex;
   margin-top: 20px;
+  justify-content: space-between;
 
   @media (max-width: 768px) {
-    flex-direction: column;
     gap: 1rem;
+    flex-direction: column;
     align-items: center;
   }
 `;
 
 const Button = styled.button`
-  background-color: #0e0e0e;
+  background-color: #03122F;
   color: #ffffff;
   border-color: #ffffff;
   padding: 10px 20px;
@@ -115,8 +114,10 @@ const Button = styled.button`
   margin: 0 5px;
 
   &:hover {
+    background-color: #000000;
+    color: #2171D1;
     border-color: #2171D1;
-    box-shadow: inset 0 0 8px #2171D1;
+    box-shadow: inset 0 0 10px #2171D1;
   }
 
   @media (max-width: 768px) {
@@ -124,29 +125,11 @@ const Button = styled.button`
   }
 `;
 
-const AddCategoryButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-
-  position: absolute;
-  top: 270px;
-  right: 60px;
-
-  @media (max-width: 768px) {
-    position: static;
-  }
-`;
-
 const FieldGroup = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-  gap: 60px;
+  flex-direction: column;
 
   @media (max-width: 768px) {
-    flex-direction: column;
     gap: 10px;
   }
 `;
@@ -154,12 +137,10 @@ const FieldGroup = styled.div`
 const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  flex: 1;
 `;
 
-const VideoForm = ( { categorias , cambiarEstado }) => {
-    const { crearVideo } = useContext(DataContext);
+const EditVideoForm = ({ categorias, selectedVideo }) => {
+  const { actualizarVideo } = useContext(DataContext);
 
   const {
     register,
@@ -168,21 +149,27 @@ const VideoForm = ( { categorias , cambiarEstado }) => {
     reset,
   } = useForm();
 
+  // Usamos useEffect para rellenar el formulario con los datos de selectedVideo
+  useEffect(() => {
+    if (selectedVideo) {
+      // Rellenamos el formulario con los datos del video seleccionado
+      reset({
+        titulo: selectedVideo.titulo || "",
+        categoria: selectedVideo.categoria || "",
+        imagen: selectedVideo.imagen || "",
+        link: selectedVideo.link || "",
+        descripcion: selectedVideo.descripcion || "",
+      });
+    }
+  }, [selectedVideo, reset]);
+
   const onSubmit = (data) => {
-    const newVideo = { ...data, id: uuid() };
-    crearVideo(newVideo);
+    actualizarVideo(data);
     reset();
   };
 
   return (
     <FormContainer>
-      <h2>Crear Tarjeta</h2>
-
-      <AddCategoryButton onClick={() => cambiarEstado("crearCategoria")}>
-        <AiOutlinePlus size={20} style={{ marginRight: "10px" }} /> Agregar
-        Categoría
-      </AddCategoryButton>
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <FieldGroup>
           <InputGroup>
@@ -204,10 +191,14 @@ const VideoForm = ( { categorias , cambiarEstado }) => {
               })}
               defaultValue=""
             >
-              <option value="" disabled >Seleccione una categoría</option>
-             {categorias.map((categoria) => (
-               <option key={categoria.id} value={categoria.titulo} >{categoria.titulo}</option>
-             ))}
+              <option value="" disabled>
+                Seleccione una categoría
+              </option>
+              {categorias.map((categoria) => (
+                <option key={categoria.id} value={categoria.titulo}>
+                  {categoria.titulo}
+                </option>
+              ))}
             </Select>
             {errors.categoria && <Error>{errors.categoria.message}</Error>}
           </InputGroup>
@@ -248,15 +239,13 @@ const VideoForm = ( { categorias , cambiarEstado }) => {
 
         <ButtonGroup>
           <Button type="submit">GUARDAR</Button>
-          <Button type="button" $secondary onClick={() => reset()}>
+          <Button type="button" onClick={() => reset()}>
             LIMPIAR
           </Button>
         </ButtonGroup>
       </form>
-
-
     </FormContainer>
   );
 };
 
-export default VideoForm;
+export default EditVideoForm;

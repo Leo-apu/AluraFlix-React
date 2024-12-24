@@ -100,7 +100,9 @@ const VideoCard = ( { colorPrimario , video , cambiarEstado , setSelectedVideo }
         <Button $colorPrimario={colorPrimario} onClick={handleDeleteVideo}>
           <FaTrash /> Borrar
         </Button>
-        <Button $colorPrimario={colorPrimario} onClick={() => cambiarEstado("editar")} >
+        <Button $colorPrimario={colorPrimario} onClick={() => {
+          setSelectedVideo(video);
+          cambiarEstado("editar")}} >
           <FaEdit /> Editar
         </Button>
       </ButtonContainer>

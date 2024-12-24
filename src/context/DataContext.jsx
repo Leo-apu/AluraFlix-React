@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useState , createContext , useEffect } from "react";
+import showAlert from "../util/Alert";
 
 const DataContext = createContext();
 
@@ -48,6 +49,7 @@ export const DataProvider = ({ children }) => {
         try {
             const response = await axios.post("http://localhost:3003/videos", video);
             setVideos((prevData) => [...prevData, response.data]);
+            showAlert("Video Agregado con Exito", `El video "${video.titulo}" ha sido agregado con exito`, "success" , "Aceptar");
         } catch (error) {
             console.error("Error al crear el video:", error);
         }
@@ -58,6 +60,12 @@ export const DataProvider = ({ children }) => {
             const response = await axios.put( apiUrl +`videos/${video.id}`, video);
             setVideos((prevData) =>
                 prevData.map((item) => (item.id === video.id ? response.data : item))
+            );
+            showAlert(
+                "Video Actualizado con Exito",
+                `El video "${video.titulo}" ha sido actualizado con exito`,
+                "success",
+                "Aceptar"                
             );
         } catch (error) {
             console.error("Error al actualizar el video:", error);

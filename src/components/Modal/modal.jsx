@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { AiFillCloseCircle } from "react-icons/ai";
+import { RiCloseCircleLine } from "react-icons/ri";
 import styled from "styled-components"
 
 
@@ -9,11 +9,12 @@ const Overlay = styled.div`
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background-color: rgb(51 23 202 / 50%);
+    min-height: 100vh;
+    background-color: rgb(3 18 47 / 80%);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 `;
 
 const ModlaHead = styled.div`
@@ -23,10 +24,9 @@ const ModlaHead = styled.div`
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #077aa3;
-    
 
     h3 {
-        color: black;
+        color: #ffffff;
         font-size: 2rem;
         font-weight: 500;
     }
@@ -40,8 +40,8 @@ const BotonCerrar = styled.button`
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    color : #d52404;
-    font-size: 2rem;
+    color : #ffffff;
+    font-size: 3rem;
 
     &:hover {
         transform: scale(1.1);
@@ -49,20 +49,20 @@ const BotonCerrar = styled.button`
 `;
 
 const ModalContainer = styled.div`
-    width: 50%;
-    background-color: white;
+    width: 65%;
+    background-color: #03122F;
     border-radius: 10px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+    border : 4px solid #6BD1FF;
     position: relative;
     box-shadow: 0 7px 29px 0px rgba(100, 100, 111, 0.3);
     padding: 20px;
+
 
     @media (max-width: 768px) {
         width: 97%;
     }
 `;
+
 
 
 const Modal = ( {children , estado , cambiarEstado }  ) => {
@@ -76,10 +76,12 @@ const Modal = ( {children , estado , cambiarEstado }  ) => {
                         <h3>Modal</h3>
                     </ModlaHead>
 
-                    {children}
+                    
+                        {children}
+                    
 
                     <BotonCerrar  onClick={() => cambiarEstado(!estado)}>
-                        <AiFillCloseCircle />
+                        <RiCloseCircleLine />
                     </BotonCerrar>
                 </ModalContainer>
             </Overlay>   
