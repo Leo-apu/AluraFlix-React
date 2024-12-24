@@ -12,6 +12,11 @@ const GlobalStyles = createGlobalStyle`
   src: local("Gandhi Sans Bold"), local("GandhiSansBold"), url(${GandhiSansBold});
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html {
     line-height: 1.15; 

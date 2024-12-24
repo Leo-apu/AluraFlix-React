@@ -1,24 +1,32 @@
-/* eslint-disable react-refresh/only-export-components */
 
 import styled from 'styled-components'
 import logo from '../../assets/img/Logo.png'
-
+import Nav from '../Navegador/nav'
 
 const HeaderEstilizado = styled.header`
-   padding: 60px 0;
+   padding: 30px 60px;
    display: flex;
     justify-content: space-between;
     img{
         width: 212px;
     }
+
+    @media (max-width: 768px) {
+        img {
+            display: none;
+        }
+
+        padding: 0;
+    }
 `
 
-const header = () => {
+const Header = () => {
   return (
         <HeaderEstilizado>
             <img src={logo} alt="Logo AluraFlix" />
+            <Nav/>
         </HeaderEstilizado>
   )
 }
 
-export default header
+export default Header

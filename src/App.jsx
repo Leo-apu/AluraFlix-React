@@ -1,43 +1,57 @@
 import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
 import styled from "styled-components";
 import Header from "./components/Header/header.jsx";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from "./components/Pages/Home.jsx";
+import Footer from "./components/Footer/footer.jsx";
+import Video from "./components/Pages/Video.jsx";
+import { useContext } from "react";
+import { DataContext } from "./context/DataContext.jsx";
 
 const FondoGradiente = styled.div`
-  /* background: linear-gradient(
-    175deg,
-    #041833 4.16%,
-    #04244f 48%,
-    #154580 96.76%
-  ); */
   background-color: #262626;
   width: 100%;
   min-height: 100vh;
 `;
+
 const AppContainer = styled.div`
-  width: 1280px;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 auto; 
 `;
+
 const MainContainer = styled.main`
-  display: flex;
+  
   gap: 24px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 8vh;
+  }
 `;
 
 function App() {
+
+const { categorias, videos } = useContext(DataContext);
+
+
   return (
-    <>
+    <Router>
       <FondoGradiente>
-        <GlobalStyles />
+        <GlobalStyles /> 
         <AppContainer>
-          <Header/>
+          <Header />
           <MainContainer>
-            <section>
-              <h1>AluraFlix</h1>
-            </section>
+            <Routes>
+              <Route path="/" element={<Home categorias={categorias} videos={videos}  />} />
+
+              <Route path="/video" element={<Video categorias={categorias} videos={videos} />} />
+
+              <Route path="*" element={<h1>404</h1>} />
+            </Routes>
           </MainContainer>
+          <Footer />
         </AppContainer>
       </FondoGradiente>
-    </>
+    </Router>
   );
 }
 
