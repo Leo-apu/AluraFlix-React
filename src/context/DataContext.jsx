@@ -47,7 +47,7 @@ export const DataProvider = ({ children }) => {
 
     const crearVideo = async (video) => {
         try {
-            const response = await axios.post("http://localhost:3003/videos", video);
+            const response = await axios.post(apiUrl +"/videos", video);
             setVideos((prevData) => [...prevData, response.data]);
             showAlert("Video Agregado con Exito", `El video "${video.titulo}" ha sido agregado con exito`, "success" , "Aceptar");
         } catch (error) {

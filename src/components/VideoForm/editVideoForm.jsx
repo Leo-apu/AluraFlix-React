@@ -240,7 +240,7 @@ const EditVideoForm = ({ categorias, selectedVideo }) => {
         <ButtonGroup>
           <Button type="submit">GUARDAR</Button>
           <Button type="button" onClick={() => reset()}>
-            LIMPIAR
+            RESTAURAR
           </Button>
         </ButtonGroup>
       </form>

@@ -109,12 +109,14 @@ const CategoryForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const newCategory = {
-      id: uuidv4(),
-      ...data,
-    };
+    const newCategory = { ...data, id: uuidv4() };
     crearCategoria(newCategory);
-    reset({ colorPrimario: "#000000" });
+    reset({
+      colorPrimario: "#000000",
+      descripcion: "",
+      titulo: "",
+      categoria: "",
+    });
   };
 
   return (
@@ -159,7 +161,16 @@ const CategoryForm = () => {
 
         <ButtonGroup>
           <Button type="submit">GUARDAR</Button>
-          <Button type="button" onClick={() => reset({ colorPrimario: "#000000" })}>
+          <Button type="button" 
+          onClick={() =>
+            reset({
+              colorPrimario: "#000000",
+              descripcion: "",
+              titulo: "",
+              categoria: "",
+            })
+          }
+          >
             LIMPIAR
           </Button>
         </ButtonGroup>

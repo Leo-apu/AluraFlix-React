@@ -43,7 +43,7 @@ const { categorias, videos } = useContext(DataContext);
             <Routes>
               <Route path="/" element={<Home categorias={categorias} videos={videos}  />} />
 
-              <Route path="/video" element={<Video categorias={categorias} />} />
+              <Route path="/video" element={<Video categorias={categorias} videos={videos} />} />
 
               <Route path="*" element={<h1>404</h1>} />
             </Routes>

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { DataContext } from "../../context/DataContext";
+import showAlert from "../../util/Alert";
 
 const FormContainer = styled.div`
   width: 100%;
@@ -119,8 +120,8 @@ const Select = styled.select`
   }
 `;
 
-const DeteleCategoryForm = ({ categorias }) => {
-  const { eliminarCategoria } = useContext(DataContext);
+const DeteleCategoryForm = ({ categorias , videos }) => {
+  const { eliminarCategoria ,eliminarVideo } = useContext(DataContext);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const {
@@ -130,18 +131,57 @@ const DeteleCategoryForm = ({ categorias }) => {
     reset,
     setValue,
   } = useForm();
-
+  
   const onSubmit = (data) => {
     const { categoria, ...cleanData } = data;
     const deleteCategoria = { ...cleanData, id: selectedCategory.id };
-    eliminarCategoria(selectedCategory.id);
-    
-    reset({
-      colorPrimario: "#000000",
-      descripcion: "",
-      titulo: "",
-      categoria: "",
-    });
+    const videosCategoria = videos.filter((video) => video.categoria === selectedCategory?.titulo);
+
+    if (videosCategoria.length > 0) {
+      showAlert(
+        "No se puede eliminar la categoría",
+        "La categoría tiene videos asociados. ¿Desea eliminarla de todos modos?",
+        "warning",
+        "Aceptar",
+        true 
+      ).then((result) => {
+        if (result.isConfirmed) {
+          // Eliminar videos asociados a la categoría
+          videosCategoria.forEach((video) => {
+            eliminarVideo(video.id);
+          })
+          // Eliminar categoría si el usuario presiona "Aceptar"
+          eliminarCategoria(selectedCategory.id);
+          reset({
+            colorPrimario: "#000000",
+            descripcion: "",
+            titulo: "",
+            categoria: "",
+          });
+        } else {
+          // Si el usuario presiona "Cancelar", no hacemos nada
+          showAlert("Eliminación cancelada", "La categoría no ha sido eliminada.", "info", "Aceptar");
+        }
+      });
+    } else {
+      showAlert(
+        "Eliminación de categoría",
+        "La categoría no tiene videos asociados. ¿Desea eliminarla?",
+        "warning",
+        "Aceptar" ,
+        true
+      ).then((result) => {
+        if (result.isConfirmed) {
+          //eliminarCategoria(selectedCategory.id);
+          reset({
+            colorPrimario: "#000000",
+            descripcion: "",
+            titulo: "",
+            categoria: "",
+          });
+        }
+      });
+    }
   };
 
   const handleCategoryChange = (categoriaTitulo) => {

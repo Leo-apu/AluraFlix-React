@@ -37,25 +37,32 @@ const BotonesTipo = styled.div`
   gap: 10px;
   margin-bottom: 1rem;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledButton = styled.button`
-  background-color: ${(props) => (props.active ? "#333" : "#1a1a1a")};
-  color: ${(props) => (props.active ? "white" : "#b3b3b3")};
-  border: 1px solid ${(props) => (props.active ? "#555" : "#333")};
+  background-color: ${(props) => (props.$active ? "#000000" : "#03122F")};
+  color: ${(props) => (props.$active ? "#2171D1" : "#ffffff")};
+  border: 1px solid ${(props) => (props.$active ? "#2171D1" : "#ffffff")};
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size:${(props) => (props.$active ? "0.95rem" : "1rem")}; 
   transition: all 0.3s ease;
+  box-shadow: ${(props) => (props.$active ?  "inset 0 0 8px #2171D1" : "none")};
+  transition: all 0.3s ease;
+  text-transform: ${(props) => (props.$active ? "uppercase" : "none")};
 
   &:hover {
-    background-color: ${(props) => (props.active ? "#444" : "#2a2a2a")};
+    background-color: ${(props) => (props.$active ? "#2a238d" : "#2171D1")};
     color: white;
   }
 `;
 
-const Video = ({ categorias }) => {
+const Video = ({ categorias , videos }) => {
   const { open, cambiarEstado } = useModal();
   const [tipo, setTipo] = useState("crear");
 
@@ -68,30 +75,34 @@ const Video = ({ categorias }) => {
         </VideoSubtitle>
         <VideoForm categorias={categorias} cambiarEstado={cambiarEstado} />
       </VideoContainer>
-      <Modal estado={open} cambiarEstado={() => cambiarEstado(null)}>
+      <Modal estado={open} cambiarEstado={() => cambiarEstado(null)}
+        titulo={"Administrar Categorias"}
+        mostrarEncabezado={true}
+        padding={'20px'}
+        >
         <BotonesTipo>
           <StyledButton
             onClick={() => setTipo("crear")}
-            active={tipo === "crear"}
+            $active={tipo === "crear"}
           >
             Crear Categoria
           </StyledButton>
           <StyledButton
             onClick={() => setTipo("editar")}
-            active={tipo === "editar"}
+            $active={tipo === "editar"}
           >
             Editar Categoria
           </StyledButton>
           <StyledButton
             onClick={() => setTipo("eliminar")}
-            active={tipo === "eliminar"}
+            $active={tipo === "eliminar"}
           >
             Eliminar Categoria
           </StyledButton>
         </BotonesTipo>
         {tipo === "crear" && <CategoryForm />}
         {tipo === "editar" && <EditCategoryForm categorias={categorias} />}
-        {tipo === "eliminar" && <DeleteCategoryForm categorias={categorias} />}
+        {tipo === "eliminar" && <DeleteCategoryForm categorias={categorias} videos={videos} />}
       </Modal>
     </>
   );

@@ -54,14 +54,29 @@ const Home = ({ categorias, videos }) => {
             />
           ))}
 
-      <Modal estado={open} cambiarEstado={() => cambiarEstado(null)}>
-        {typeModal === "editar" && (
+      {typeModal === "editar" && (
+        <Modal
+          estado={open}
+          cambiarEstado={() => cambiarEstado(null)}
+          titulo={"Editar Video"}
+          mostrarEncabezado={true}
+          padding={"20px"}
+        >
           <EditVideoForm
             categorias={categorias}
             selectedVideo={selectedVideo}
           />
-        )}
-        {typeModal === "verVideo" && selectedVideo ? (
+        </Modal>
+      )}
+
+      {typeModal === "verVideo" && selectedVideo ? (
+        <Modal
+          estado={open}
+          cambiarEstado={() => cambiarEstado(null)}
+          titulo={selectedVideo.titulo}
+          mostrarEncabezado={false}
+          padding={"0px"}
+        >
           <IframeContainer>
             <StyledIframe
               src={`https://www.youtube.com/embed/${getYouTubeID(
@@ -73,10 +88,11 @@ const Home = ({ categorias, videos }) => {
               allowFullScreen
             ></StyledIframe>
           </IframeContainer>
-        ) : typeModal === "verVideo" ? (
-          <h3>Selecciona un video</h3>
-        ) : null}
-      </Modal>
+        </Modal>
+      ) : typeModal === "verVideo" ? (
+        <h3>Selecciona un video</h3>
+      ) : null}
+
     </>
   );
 };
