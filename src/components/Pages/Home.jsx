@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import Banner from "../Banner/Banner";
-import Categoria from "../Categoria/categoria";
-import Modal from "../Modal/modal";
+import Banner from "../Banner/banner.jsx";
+import Categoria from "../Categoria/categoria.jsx";
+import Modal from "../Modal/modal.jsx";
 import { useState } from "react";
 import useModal from "../../util/useModal";
-import EditVideoForm from "../VideoForm/editVideoForm";
+import EditVideoForm from "../VideoForm/editVideoForm.jsx";
 import styled from "styled-components";
 
 const IframeContainer = styled.div`

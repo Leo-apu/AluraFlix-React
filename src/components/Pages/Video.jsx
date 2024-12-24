@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import VideoForm from "../VideoForm/videoForm";
-import Modal from "../Modal/modal";
+import VideoForm from "../VideoForm/videoForm.jsx";
+import Modal from "../Modal/modal.jsx";
 import useModal from "../../util/useModal";
-import CategoryForm from "../CategoriaForm/categoryForm";
+import CategoryForm from "../CategoriaForm/categoryForm.jsx";
 
 import { useState } from "react";
-import EditCategoryForm from "../CategoriaForm/editCategoryForm";
-import DeleteCategoryForm from "../CategoriaForm/deleteCategoryForm";
+import EditCategoryForm from "../CategoriaForm/editCategoryForm.jsx";
+import DeleteCategoryForm from "../CategoriaForm/deleteCategoryForm.jsx";
 
 const VideoContainer = styled.div`
   display: flex;
