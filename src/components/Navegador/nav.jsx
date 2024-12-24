@@ -35,12 +35,16 @@ const DesktopButtons = styled.div`
 
 const MobileButtons = styled.div`
   display: none;
-  gap: 50px;
+  gap: 63px;  
   align-items: center;
+  position: fixed;
+  bottom: 15px;  
+  left: 50%;  
+  transform: translateX(-50%);  
+  z-index: 1;
 
   @media (max-width: 768px) {
     display: flex;
-    margin-left: 2.5rem;
   }
 `;
 
