@@ -42,6 +42,10 @@ const MobileButtons = styled.div`
   left: 50%;  
   transform: translateX(-50%);  
   z-index: 1;
+  
+  a {
+    text-decoration: none;
+  }
 
   @media (max-width: 768px) {
     display: flex;
