@@ -94,6 +94,11 @@ export const DataProvider = ({ children }) => {
         try {
             const response = await axios.post(apiUrl +"categorias", categoria);
             setCategorias((prevData) => [...prevData, response.data]);
+            showAlert(
+                "Categoria Agregada con Exito", 
+                `La categoría "${categoria.titulo}" ha sido agregada con exito`, 
+                "success" , "Aceptar"
+            );
         } catch (error) {
             console.error("Error al crear la categoría:", error);
         }
@@ -108,6 +113,12 @@ export const DataProvider = ({ children }) => {
             setCategorias((prevData) =>
                 prevData.map((item) => (item.id === categoria.id ? response.data : item))
             );
+            showAlert    (
+                "Categoria Actualizada con Exito",
+                `La categoría "${categoria.titulo}" ha sido actualizada con exito`,
+                "success",
+                "Aceptar"                
+            );
         } catch (error) {
             console.error("Error al actualizar la categoría:", error);
         }
@@ -117,6 +128,12 @@ export const DataProvider = ({ children }) => {
         try {
             await axios.delete(apiUrl +`categorias/${id}`);
             setCategorias((prevData) => prevData.filter((item) => item.id !== id));
+            showAlert(
+                "Categoria Eliminada con Exito",
+                `La categoría ha sido eliminada con exito`,
+                "success",
+                "Aceptar"
+            )
         } catch (error) {
             console.error("Error al eliminar la categoría:", error);
         }

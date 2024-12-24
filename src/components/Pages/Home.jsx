@@ -7,7 +7,6 @@ import useModal from "../../util/useModal";
 import EditVideoForm from "../VideoForm/editVideoForm";
 import styled from "styled-components";
 
-
 const IframeContainer = styled.div`
   position: relative;
   width: 100%;
@@ -25,7 +24,7 @@ const StyledIframe = styled.iframe`
 `;
 
 const Home = ({ categorias, videos }) => {
-  const { open, cambiarEstado , typeModal } = useModal();
+  const { open, cambiarEstado, typeModal } = useModal();
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const getYouTubeID = (url) => {
@@ -38,31 +37,42 @@ const Home = ({ categorias, videos }) => {
     <>
       <Banner />
       {categorias &&
-        categorias.map((categoria) => (
-          <Categoria
-            key={categoria.id}
-            titulo={categoria.titulo}
-            colorPrimario={categoria.colorPrimario}
-            videos={videos.filter(
-              (video) => video.categoria === categoria.titulo
-            )}
-            cambiarEstado={cambiarEstado}
-            setSelectedVideo={setSelectedVideo}
-          />
-        ))}
+        categorias
+          .filter((categoria) =>
+            videos.some((video) => video.categoria === categoria.titulo)
+          )
+          .map((categoria) => (
+            <Categoria
+              key={categoria.id}
+              titulo={categoria.titulo}
+              colorPrimario={categoria.colorPrimario}
+              videos={videos.filter(
+                (video) => video.categoria === categoria.titulo
+              )}
+              cambiarEstado={cambiarEstado}
+              setSelectedVideo={setSelectedVideo}
+            />
+          ))}
 
       <Modal estado={open} cambiarEstado={() => cambiarEstado(null)}>
-        {typeModal === "editar" && <EditVideoForm categorias={categorias} selectedVideo={selectedVideo} />}
+        {typeModal === "editar" && (
+          <EditVideoForm
+            categorias={categorias}
+            selectedVideo={selectedVideo}
+          />
+        )}
         {typeModal === "verVideo" && selectedVideo ? (
           <IframeContainer>
-          <StyledIframe
-            src={`https://www.youtube.com/embed/${getYouTubeID(selectedVideo.link)}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></StyledIframe>
-        </IframeContainer>
+            <StyledIframe
+              src={`https://www.youtube.com/embed/${getYouTubeID(
+                selectedVideo.link
+              )}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></StyledIframe>
+          </IframeContainer>
         ) : typeModal === "verVideo" ? (
           <h3>Selecciona un video</h3>
         ) : null}

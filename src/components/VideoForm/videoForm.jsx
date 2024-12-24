@@ -179,8 +179,8 @@ const VideoForm = ( { categorias , cambiarEstado }) => {
       <h2>Crear Tarjeta</h2>
 
       <AddCategoryButton onClick={() => cambiarEstado("crearCategoria")}>
-        <AiOutlinePlus size={20} style={{ marginRight: "10px" }} /> Agregar
-        Categoría
+        <AiOutlinePlus size={20} style={{ marginRight: "10px" }} /> 
+        Menu Categoria
       </AddCategoryButton>
 
       <form onSubmit={handleSubmit(onSubmit)}>

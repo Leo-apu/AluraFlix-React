@@ -5,7 +5,6 @@ import { DataContext } from "../../context/DataContext";
 import { useContext } from "react";
 import showAlert from "../../util/Alert";
 
-// Estilos para el contenedor principal
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,7 +27,6 @@ const CardContainer = styled.div`
   }
 `;
 
-// Contenedor para la imagen o video principal
 const MediaContainer = styled.div`
   background: #001a33;
   width: 100%;
@@ -39,14 +37,12 @@ const MediaContainer = styled.div`
   box-shadow: 0 0 15px 5px ${({ $colorPrimario }) => $colorPrimario};
 `;
 
-// Estilo para la imagen o video
 const Media = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 
-// Contenedor para los botones
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -58,7 +54,6 @@ const ButtonContainer = styled.div`
   box-shadow: 0 0 15px 5px ${({ $colorPrimario }) => $colorPrimario};
 `;
 
-// Botón estilizado
 const Button = styled.button`
   display: flex;
   align-items: center;
@@ -78,13 +73,28 @@ const Button = styled.button`
   }
 `;
 
-// Componente funcional
 const VideoCard = ( { colorPrimario , video , cambiarEstado , setSelectedVideo }  ) => {
   const { eliminarVideo } = useContext(DataContext);
 
+
   const handleDeleteVideo = () => {
-    eliminarVideo(video.id);
-    showAlert("Video Eliminado", `El video "${video.titulo}" ha sido eliminado con exito`, "success" , "Aceptar");
+    showAlert(
+      "Confirmar Eliminación",
+      `¿Estás seguro de que deseas eliminar el video "${video.titulo}"? Esta acción no se puede deshacer.`,
+      "warning",
+      "Sí, eliminar",
+      "Cancelar"
+    ).then((result) => {
+      if (result.isConfirmed) {
+        eliminarVideo(video.id);
+        showAlert(
+          "Video Eliminado",
+          `El video "${video.titulo}" ha sido eliminado con éxito.`,
+          "success",
+          "Aceptar"
+        );
+      }
+    });
   };
 
 
