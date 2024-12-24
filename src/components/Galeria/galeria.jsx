@@ -55,7 +55,7 @@ const GaleriaContainer = styled.div`
   }
 `;
 
-const Galeria = ({ videos, colorPrimario , estado , cambiarEstado , estadoImg , cambiarEstadoImg , setSelectedVideo }) => {
+const Galeria = ({ videos, colorPrimario , cambiarEstado , setSelectedVideo }) => {
   return (
     <GaleriaContainer $colorPrimario={colorPrimario}>
       <Swiper
@@ -77,8 +77,8 @@ const Galeria = ({ videos, colorPrimario , estado , cambiarEstado , estadoImg , 
       >
         {videos.map((video) => (
           <SwiperSlide key={video.id}>
-            <VideoCard video={video} colorPrimario={colorPrimario} estado={estado} 
-            cambiarEstado={cambiarEstado} estadoImg={estadoImg} cambiarEstadoImg={cambiarEstadoImg} setSelectedVideo={setSelectedVideo}  />
+            <VideoCard video={video} colorPrimario={colorPrimario} 
+            cambiarEstado={cambiarEstado} setSelectedVideo={setSelectedVideo}  />
           </SwiperSlide>
         ))}
       </Swiper>

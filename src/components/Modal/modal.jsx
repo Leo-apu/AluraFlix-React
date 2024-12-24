@@ -58,6 +58,10 @@ const ModalContainer = styled.div`
     position: relative;
     box-shadow: 0 7px 29px 0px rgba(100, 100, 111, 0.3);
     padding: 20px;
+
+    @media (max-width: 768px) {
+        width: 97%;
+    }
 `;
 
 

@@ -156,7 +156,7 @@ const InputGroup = styled.div`
   flex: 1;
 `;
 
-const VideoForm = ( { categorias , estado, cambiarEstado }) => {
+const VideoForm = ( { categorias , cambiarEstado }) => {
     const { crearVideo } = useContext(DataContext);
 
   const {
@@ -176,7 +176,7 @@ const VideoForm = ( { categorias , estado, cambiarEstado }) => {
     <FormContainer>
       <h2>Crear Tarjeta</h2>
 
-      <AddCategoryButton onClick={() => cambiarEstado(!estado)}>
+      <AddCategoryButton onClick={() => cambiarEstado("crearCategoria")}>
         <AiOutlinePlus size={20} style={{ marginRight: "10px" }} /> Agregar
         Categoría
       </AddCategoryButton>

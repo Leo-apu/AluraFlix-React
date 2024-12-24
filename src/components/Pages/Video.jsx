@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import VideoForm from "../VideoForm/videoForm";
 import Modal from "../Modal/modal";
-import { useState } from "react";
+import useModal from "../../util/useModal";
 
 const VideoContainer = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const VideoSubtitle = styled.p`
 `;
 
 const Video = ({ categorias }) => {
-  const [addCategory, setAddCategory] = useState(false);
+  const { open , cambiarEstado } = useModal();
 
   return (
     <>
@@ -39,11 +39,10 @@ const Video = ({ categorias }) => {
         </VideoSubtitle>
         <VideoForm
           categorias={categorias}
-          estado={addCategory}
-          cambiarEstado={setAddCategory}
+          cambiarEstado={cambiarEstado}
         />
       </VideoContainer>
-      <Modal estado={addCategory} cambiarEstado={setAddCategory}>
+      <Modal estado={open} cambiarEstado={() => cambiarEstado(null)}>
         <h3>crear</h3>
       </Modal>
     </>

@@ -22,6 +22,10 @@ const CardContainer = styled.div`
     box-shadow: 0 0 15px 5px ${({ $colorPrimario }) => $colorPrimario};
     transform: scale(0.95);
   }
+
+  @media (max-width: 768px) {
+    max-width: 92%;
+  }
 `;
 
 // Contenedor para la imagen o video principal
@@ -75,7 +79,7 @@ const Button = styled.button`
 `;
 
 // Componente funcional
-const VideoCard = ( { colorPrimario , video ,estado , cambiarEstado , estadoImg , cambiarEstadoImg , setSelectedVideo }  ) => {
+const VideoCard = ( { colorPrimario , video , cambiarEstado , setSelectedVideo }  ) => {
   const { eliminarVideo } = useContext(DataContext);
 
   const handleDeleteVideo = () => {
@@ -88,7 +92,7 @@ const VideoCard = ( { colorPrimario , video ,estado , cambiarEstado , estadoImg 
     <CardContainer $colorPrimario={colorPrimario} >
       <MediaContainer $colorPrimario={colorPrimario} onClick={() => {
         setSelectedVideo(video);
-         cambiarEstadoImg(!estadoImg);
+         cambiarEstado("verVideo");
       }}>
         <Media src={video.imagen} alt="Preview"  />
       </MediaContainer>
@@ -96,7 +100,7 @@ const VideoCard = ( { colorPrimario , video ,estado , cambiarEstado , estadoImg 
         <Button $colorPrimario={colorPrimario} onClick={handleDeleteVideo}>
           <FaTrash /> Borrar
         </Button>
-        <Button $colorPrimario={colorPrimario} onClick={() => cambiarEstado(!estado)} >
+        <Button $colorPrimario={colorPrimario} onClick={() => cambiarEstado("editar")} >
           <FaEdit /> Editar
         </Button>
       </ButtonContainer>

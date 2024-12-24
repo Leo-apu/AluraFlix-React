@@ -3,10 +3,10 @@ import Banner from "../Banner/Banner";
 import Categoria from "../Categoria/categoria";
 import Modal from "../Modal/modal";
 import { useState } from "react";
+import useModal from "../../util/useModal";
 
 const Home = ({ categorias, videos }) => {
-  const [modalEdit, setModalEdit] = useState(false);
-  const [modalImg, setModalImg] = useState(false);
+  const { open, cambiarEstado , typeModal } = useModal();
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const getYouTubeID = (url) => {
@@ -27,31 +27,26 @@ const Home = ({ categorias, videos }) => {
             videos={videos.filter(
               (video) => video.categoria === categoria.titulo
             )}
-            estado={modalEdit}
-            cambiarEstado={setModalEdit}
-            estadoImg={modalImg}
-            cambiarEstadoImg={setModalImg}
+            cambiarEstado={cambiarEstado}
             setSelectedVideo={setSelectedVideo}
           />
         ))}
 
-      <Modal estado={modalEdit} cambiarEstado={setModalEdit}>
-        <h3>editar</h3>
-      </Modal>
-      <Modal estado={modalImg} cambiarEstado={setModalImg}>
-        {selectedVideo ? (
+      <Modal estado={open} cambiarEstado={() => cambiarEstado(null)}>
+        {typeModal === "editar" && <h3>Editar</h3>}
+        {typeModal === "verVideo" && selectedVideo ? (
           <iframe
-          width="100%"
-          height="400"
-          src={`https://www.youtube.com/embed/${getYouTubeID(selectedVideo.link)}`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-        ) : (
+            width="100%"
+            height="400"
+            src={`https://www.youtube.com/embed/${getYouTubeID(selectedVideo.link)}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : typeModal === "verVideo" ? (
           <h3>Selecciona un video</h3>
-        )}
+        ) : null}
       </Modal>
     </>
   );
