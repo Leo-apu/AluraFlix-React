@@ -1,4 +1,4 @@
-import GlobalStyles from "./components/GlobalStyles/GlobalStyles.jsx";
+import GlobalStyles from "./components/GlobalStyles/globalStyles.jsx";
 import styled from "styled-components";
 import Header from "./components/Header/header.jsx";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
